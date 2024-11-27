@@ -76,7 +76,8 @@ class Search {
 
     private bindFilters() {
         Array.from(this.filterItems).forEach((el) => {
-            el.addEventListener('click', () => {
+            el.addEventListener('click', (e) => {
+                el.parentElement.dataset.mode = e.ctrlKey ? 'i':'x';
                 this.filterSelect(el)
             })
         })
@@ -149,13 +150,30 @@ class Search {
 
     private filterSelect(el: HTMLElement) {
         let value = el.dataset.value;
+        let mode = el.parentElement.dataset.mode; // x or i
+        console.log(`filter mode is ${mode}`);
         let type = el.dataset.type;
-        if (el.classList.contains('active')) {
-            this.searchFilter.delete(value);
-            el.classList.remove('active');
+
+        // following selects only the selected element exclusively
+        if(mode === 'x') {
+          // clear the search filter.
+          this.searchFilter.clear();
+          // clear all selections
+          Array.from(this.filterItems).forEach((e) => { e.classList.remove('active'); });
+          // add new selection
+          el.classList.add('active');
+          // add new exclusive search filter
+          this.searchFilter.set(value, type);
+          console.log(this.searchFilter);
         } else {
-            this.searchFilter.set(value, type);
-            el.classList.add('active');
+          // following only toggles the selection for clicked element
+          if (el.classList.contains('active')) {
+              this.searchFilter.delete(value);
+              el.classList.remove('active');
+          } else {
+              this.searchFilter.set(value, type);
+              el.classList.add('active');
+          }
         }
         this.executeSearch(this.buildSearchValue(""));
     }
