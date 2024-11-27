@@ -11,7 +11,7 @@
 
 <section>
     <div class="container">
-        <div class="filter-container">
+      <div class="filter-container" data-mode="x"> <!-- x or i (exclusive, or combined) -->
           {{ $maxCategoryToShow := $.Site.Params.maxCategoryToShow | default 5 }}
           {{ range .Site.Taxonomies.categories.TaxonomyArray | first $maxCategoryToShow }}
             <div class="filter-item" data-value="{{ .Page.Title }}" data-type="categories">
