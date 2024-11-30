@@ -150,6 +150,7 @@ class Search {
 
     private filterSelect(el: HTMLElement) {
         let value = el.dataset.value;
+        type mode = 'x' | 'i';
         let mode = el.parentElement.dataset.mode; // x or i
         console.log(`filter mode is ${mode}`);
         let type = el.dataset.type;
