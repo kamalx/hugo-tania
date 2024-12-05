@@ -5,6 +5,7 @@ interface searchItem {
         categorise: Array<string>,
         contents: string,
         date: string,
+        year: string,
         permalink: string,
         tags: Array<string>,
         title: string
@@ -107,9 +108,12 @@ class Search {
             let item = value.item
             let html = `
             <div class="post">
-                <a href="${item.permalink}">
+                <a href="${item.permalink}#from_local_site_search">
                     <div class="post-row">
-                        <time>${item.date}</time>
+                        <time>
+                            <span class="date">${item.date}</span>
+                            <span class="year">${typeof item.year !== 'undefined' ? item.year : '----' }</span>
+                        </time>
                         <h3>${item.title}</h3>
                     </div>
                 </a>

@@ -20,7 +20,7 @@
           {{ end }}
         </div>
         <input id="search-query" type="search" placeholder="Search for anything...">
-        
+
         <div id="search-results">
         </div>
         <section id="articles-list">
@@ -32,7 +32,7 @@
                     <div class="post">
                         <a href="{{ .RelPermalink }}">
                             <div class="post-row">
-                                <time>{{ .Date.Format "Jan 02" }}</time>
+                                {{ partial "post/timestamp.html" . }}
                                 <h3>{{ .Title }}</h3>
                             </div>
                         </a>

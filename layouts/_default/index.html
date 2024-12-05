@@ -44,7 +44,7 @@
             <div class="post">
                 <a href="{{ .RelPermalink }}">
                     <div class="post-row">
-                        <time>{{ .Date.Format "Jan 02" }}</time>
+                        {{ partial "post/timestamp.html" . }}
                         <h3>{{ .Title }}</h3>
                     </div>
                     <!--<div class="new-post">New!</div>-->
