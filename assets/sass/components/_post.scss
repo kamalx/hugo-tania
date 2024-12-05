@@ -74,7 +74,7 @@ header {
 .article-post {
     margin-bottom: 2rem;
     font-family: var(--article-font-family);
-    
+
     img{
         border-radius: 5px;
         display: block;
@@ -83,11 +83,17 @@ header {
     }
 
     a {
-        box-shadow: 0px -2px 0px rgba(189, 195, 199, 0.5) inset;
-        transition: all .3s ease;
+        color: var(--link-color);
+        border-bottom: 1px solid rgba(25, 25, 255, 0.4);
+        transition: all 160ms ease;
+        padding: 0 3px;
+        display: inline-block;
 
         &:hover {
-            box-shadow: 0px -10px 0px rgba(189, 195, 199, 0.7) inset;
+            // box-shadow: 0px -10px 0px rgba(189, 195, 199, 0.7) inset;
+            color: var(--link-color-darker);
+            border-bottom: 1px solid rgba(20, 20, 20, 0.8);
+            background-color: rgba(0,0,0, 0.6) ;
         }
     }
 
